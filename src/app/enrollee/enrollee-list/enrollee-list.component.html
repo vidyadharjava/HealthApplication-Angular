@@ -1,0 +1,36 @@
+<div *ngIf="enrolleeList.length!=0">
+    <form [formGroup]="enrollForm">
+        <div formArrayName="formArray">
+            <div *ngFor="let enrollUser of formArray.controls; let i = index">
+                <div [formGroupName]="i">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                {{enrollUser.value.id}}
+                            </div>
+                            <div class="col">
+                                <input  formControlName="name">
+                            </div>
+                            <div class="col">
+                                <input  type="checkbox" formControlName="activationStatus">
+                            </div>
+                            <div class="col">
+                                {{enrollUser.value.dateOfBirth | date: 'yyyy-MM-dd'}}
+                                <!--<input  type="text" formControlName="dateOfBirth" ngbDatepicker #d="ngbDatepicker">            
+                                <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                    <i class="glyphicon glyphicon-calendar"> </i>
+                                </button>-->
+                            </div>
+                            <div class="col">
+                                <button type="button" (click)="updateEnrollee(enrollUser.value)">update</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+          </div>
+    </form>
+
+</div>
